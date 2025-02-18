@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Neet-Notes</title>
+        <link rel="stylesheet" href="{% static "index.css" %}" />
+    </head>
+    <body>
+        <header>
+            <nav>
+                <div class="left">
+                    <img src="{% static "logo.png" %}" alt="" />
+                </div>
+
+                <div class="right">
+                    <button onclick="openBox()">STAFF ONLY</button>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <form action="" method="POST" class="center">
+                {% csrf_token %}
+                <label for="">Type your name and staff pass.</label>
+                {{login.name}}
+                {{login.password}}
+                <button Type='Submit'>Submit</button>
+            </form>
+        </main>
+        <footer></footer>
+        <script>
+            const center = document.querySelector(".center");
+            var isOpen = false;
+
+            function openBox() {
+               
+                if (isOpen == false) {
+                    center.style.display = "flex";
+                    isOpen = true;
+                } else {
+                    center.style.display = "none";
+                    isOpen = false;
+                }
+            }
+        </script>
+    </body>
+</html>

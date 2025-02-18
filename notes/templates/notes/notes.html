@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Notes</title>
+        <link rel="stylesheet" href="{% static "notes/notes.css" %}" />
+    </head>
+    <body>
+        <h1>STAFF ONLY</h1>
+        <div class="center">
+            {% for msg in msgs %}
+                <div class="msg">
+                    <p class="username">{{msg.user}}</p>
+                    <p class="message">{{msg.messages}}</p>
+                    <p class="time">{{msg.time_date}}</p>
+                </div>
+            {% endfor %}
+        </div>
+        <form action="" method="POST" class="bottom">
+            {% csrf_token %}
+            {{data.message}}
+            <button type='Submit'>
+                <img
+                    src="https://img.icons8.com/ios-glyphs/30/sent.png"
+                    alt="sent"
+                />
+            </button>
+        </form>
+
+        <script>
+            window.onload = function () {
+                let div = document.querySelector(".center");
+                div.scrollTop = div.scrollHeight;
+            };
+        </script>
+    </body>
+</html>
